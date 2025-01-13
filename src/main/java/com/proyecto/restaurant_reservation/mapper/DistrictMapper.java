@@ -5,6 +5,8 @@ import com.proyecto.restaurant_reservation.dto.response.DistrictResponseDTO;
 import com.proyecto.restaurant_reservation.dto.response.RestaurantResponseDTO;
 import org.mapstruct.Mapper;
 
+import java.util.List;
+
 // MapStruct genera automáticamente el código de mapeo y lo convierte en un componente Spring.
 @Mapper(componentModel = "spring")
 public interface DistrictMapper {
@@ -17,6 +19,9 @@ public interface DistrictMapper {
 
     // Conversión de entidad a DTO
     DistrictResponseDTO toResponseDTO(District district);
+
+    // Mapea una lista de entidades Restaurant a una lista de RestaurantResponseDTO
+    List<DistrictResponseDTO> toResponseDtoList(List<District> districts);
 
     // Conversión de DTO a entidad
     District toEntity(DistrictResponseDTO dto);
