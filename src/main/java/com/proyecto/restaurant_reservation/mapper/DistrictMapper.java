@@ -1,22 +1,23 @@
 package com.proyecto.restaurant_reservation.mapper;
-
 import com.proyecto.restaurant_reservation.domain.entity.District;
+import com.proyecto.restaurant_reservation.domain.entity.Restaurant;
 import com.proyecto.restaurant_reservation.dto.response.DistrictResponseDTO;
-import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
-import org.springframework.stereotype.Component;
-@RequiredArgsConstructor
-@Component
-public class DistrictMapper {
+import com.proyecto.restaurant_reservation.dto.response.RestaurantResponseDTO;
+import org.mapstruct.Mapper;
 
-    private final ModelMapper modelMapper;
+// MapStruct genera automáticamente el código de mapeo y lo convierte en un componente Spring.
+@Mapper(componentModel = "spring")
+public interface DistrictMapper {
 
-    /**
-     * Convierte una entidad District a un objeto DistrictResponseDTO.
-     * Se utiliza ModelMapper para automatizar la copia de atributos entre las dos clases,
-     * reduciendo código repetitivo.
+    /*
+     * Convierte una entidad District a un DTO DistrictResponseDTO.
+     * Se encarga de la conversión automáticamente al compilar, sin necesidad de escribir código repetitivo.
+     * El componente Spring asegura que este mapeador esté disponible en toda la aplicación.
      */
-    public DistrictResponseDTO toResponseDTO(District district) {
-        return modelMapper.map(district, DistrictResponseDTO.class);
-    }
+
+    // Conversión de entidad a DTO
+    DistrictResponseDTO toResponseDTO(District district);
+
+    // Conversión de DTO a entidad
+    District toEntity(DistrictResponseDTO dto);
 }
