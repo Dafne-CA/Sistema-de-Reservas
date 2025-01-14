@@ -33,7 +33,7 @@ public class RestaurantController {
         return ResponseEntity.ok(restaurants);
     }
 
-    //Busca un restaurante específico por su ID.
+    //Busca un restaurante específico por su ID
     @GetMapping("/{id}")
     public ResponseEntity<RestaurantResponseDTO> getRestaurantById(@PathVariable Long id){
         RestaurantResponseDTO restaurant = restaurantService.getRestaurantById(id);

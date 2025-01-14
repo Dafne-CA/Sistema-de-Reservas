@@ -15,7 +15,7 @@ import java.util.List;
 @RequestMapping("/districts")
 public class DistrictController {
     private final DistrictService districtService;
-    //lista distritos
+
     @GetMapping
     public ResponseEntity<List<DistrictResponseDTO>> getAllDistricts() {
         List<DistrictResponseDTO> districts= districtService.getAllDistricts();

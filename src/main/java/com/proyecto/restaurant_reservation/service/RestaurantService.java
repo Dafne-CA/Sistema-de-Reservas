@@ -36,7 +36,7 @@ public class RestaurantService {
         return restaurants.map(restaurantMapper::toResponseDTO);
     }
 
-    //Lista los restaurantes filtrados por el nombre del distrito.
+    //Lista los restaurantes filtrados por el nombre del distrito
     @Transactional( readOnly = true)
     public Page<RestaurantResponseDTO> getRestaurantsByDistrictName(Pageable pageable, String districtName) {
         Page<Restaurant> restaurants=restaurantRepository.findByDistrictName(districtName, pageable);

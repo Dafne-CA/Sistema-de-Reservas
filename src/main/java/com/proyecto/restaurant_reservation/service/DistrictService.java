@@ -40,7 +40,7 @@ public class DistrictService {
      * 3. Devolver la lista de DTOs al controlador para enviarlos como respuesta al cliente.
      */
 
-    // La anotación asegura que esta operación sea de solo lectura.
+    // La anotación asegura que esta operación sea de solo lectura
     @Transactional( readOnly = true)
     public List<DistrictResponseDTO> getAllDistricts() {
         // 1. Obtiene todos los distritos desde el repositorio.
