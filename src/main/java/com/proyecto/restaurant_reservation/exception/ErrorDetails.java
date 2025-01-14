@@ -1,12 +1,14 @@
 package com.proyecto.restaurant_reservation.exception;
 
 import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
 import java.time.LocalDateTime;
 
-@Getter @Setter
+@Data
 @AllArgsConstructor
+@NoArgsConstructor
 public class ErrorDetails {
     /**
      * Clase que encapsula los detalles de un error en la aplicación.
@@ -19,7 +21,6 @@ public class ErrorDetails {
      * - Un mensaje descriptivo sobre el error.
      * - Detalles adicionales relacionados con el error.
      */
-
     private LocalDateTime timestamp;
     private String message;
     private String details;

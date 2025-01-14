@@ -2,19 +2,18 @@ package com.proyecto.restaurant_reservation.mapper;
 
 import com.proyecto.restaurant_reservation.domain.entity.Restaurant;
 import com.proyecto.restaurant_reservation.dto.response.RestaurantResponseDTO;
-import org.mapstruct.Mapper;
+import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
+import org.springframework.stereotype.Component;
 
-import java.util.List;
+@RequiredArgsConstructor
+@Component
+public class RestaurantMapper {
 
-@Mapper(componentModel = "spring")
-public interface RestaurantMapper {
+    private final ModelMapper modelMapper;
 
-    //Convierte una entidad a un DTO.
-    RestaurantResponseDTO toResponseDTO(Restaurant restaurant);
+    public RestaurantResponseDTO toResponseDto(Restaurant restaurant) {
+        return modelMapper.map(restaurant, RestaurantResponseDTO.class);
+    }
 
-    // Mapea una lista de entidades Restaurant a una lista de RestaurantResponseDTO
-    List<RestaurantResponseDTO> toResponseDtoList(List<Restaurant> restaurants);
-
-    // Conversión de DTO a entidad.
-    Restaurant toEntity(RestaurantResponseDTO dto);
 }

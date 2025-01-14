@@ -1,14 +1,17 @@
 package com.proyecto.restaurant_reservation.domain.entity;
 
 import jakarta.persistence.*;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
-@Table(name="restaurants")
+@Data
+@NoArgsConstructor
+@Table(name = "restaurants")
 public class Restaurant {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
     @Column(name = "name", nullable = false)
     private String name;
     @Column(name = "address", nullable = false)
@@ -25,7 +28,6 @@ public class Restaurant {
     se van a asociar con distrito*/
 
     @ManyToOne
-    @JoinColumn(name = "district_id", nullable = false)//clave foreana, asociacion
+    @JoinColumn(name = "district_id", nullable = false, foreignKey = @ForeignKey(name = "FK_RESTAURANT_DISTRICT"))
     private District district;
-
 }

@@ -4,14 +4,15 @@ import com.proyecto.restaurant_reservation.domain.entity.District;
 import com.proyecto.restaurant_reservation.dto.response.DistrictResponseDTO;
 import com.proyecto.restaurant_reservation.mapper.DistrictMapper;
 import com.proyecto.restaurant_reservation.repository.DistrictRepository;
+
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
-@Service
 @RequiredArgsConstructor
+@Service
 public class DistrictService {
     /*
      * -------------------------------
@@ -41,7 +42,7 @@ public class DistrictService {
      */
 
     // La anotación asegura que esta operación sea de solo lectura
-    @Transactional( readOnly = true)
+    @Transactional(readOnly= true)
     public List<DistrictResponseDTO> getAllDistricts() {
         // 1. Obtiene todos los distritos desde el repositorio.
         List<District> districts = districtRepository.findAll();

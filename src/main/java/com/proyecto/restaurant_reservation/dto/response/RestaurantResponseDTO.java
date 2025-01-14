@@ -1,10 +1,8 @@
 package com.proyecto.restaurant_reservation.dto.response;
 
-import jakarta.persistence.Column;
-import lombok.Getter;
-import lombok.Setter;
+import lombok.Data;
 
-@Setter @Getter
+@Data
 public class RestaurantResponseDTO {
     private Long id;
     private String name;

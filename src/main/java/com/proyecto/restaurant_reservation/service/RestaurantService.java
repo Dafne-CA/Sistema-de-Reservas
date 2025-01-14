@@ -11,10 +11,10 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-
-@Service
 @RequiredArgsConstructor
+@Service
 public class RestaurantService {
+
     private final RestaurantRepository restaurantRepository;
     private final RestaurantMapper restaurantMapper;
     /**
@@ -33,23 +33,22 @@ public class RestaurantService {
         // Llama al repositorio para buscar restaurantes en la base de datos
         Page<Restaurant> restaurants = restaurantRepository.findAll(pageable);
         // Convierte cada Restaurant en un DTO y devuelve la página transformada.
-        return restaurants.map(restaurantMapper::toResponseDTO);
+        return restaurants.map(restaurantMapper::toResponseDto);
     }
 
     //Lista los restaurantes filtrados por el nombre del distrito
     @Transactional( readOnly = true)
-    public Page<RestaurantResponseDTO> getRestaurantsByDistrictName(Pageable pageable, String districtName) {
-        Page<Restaurant> restaurants=restaurantRepository.findByDistrictName(districtName, pageable);
-        return restaurants.map(restaurantMapper::toResponseDTO);
+    public Page<RestaurantResponseDTO> findByDistrictName(String districtName, Pageable pageable) {
+        Page<Restaurant> restaurants = restaurantRepository.findByDistrictName(districtName, pageable);
+        return restaurants.map(restaurantMapper::toResponseDto);
     }
 
     //Obtiene los detalles de un restaurante específico por su ID.
     public RestaurantResponseDTO getRestaurantById(Long id) {
-        // 1. Busca el restaurante por ID. Si no existe, lanza una excepción personalizada.
+        //Busca el restaurante por ID. Si no existe, lanza una excepción personalizada.
         Restaurant restaurant = restaurantRepository.findById(id)
-                .orElseThrow(() -> new ResourceNotFoundException("Restaurant not found with id: "+id));
-        // 2. Convierte el restaurante encontrado en un DTO y lo devuelve.
-        return restaurantMapper.toResponseDTO(restaurant);
+                .orElseThrow(() -> new ResourceNotFoundException("Restaurant not found with id: " + id));
+        return restaurantMapper.toResponseDto(restaurant);// 2. Convierte el restaurante encontrado en un DTO y lo devuelve
     }
 
 }
